@@ -30,13 +30,13 @@ RUN echo "$USERNAME:password" | chpasswd
 # Create the home directory for the user and set it as the user's home
 RUN mkdir -p /home/$USERNAME/ws && \
     chown $USERNAME:$USERNAME /home/$USERNAME/ws && \
-    usermod -d /home/$USERNAME/ws $USERNAME
+    usermod -d /home/$USERNAME $USERNAME
 
 # Switch to the user
 USER $USERNAME
 
 # Set the working directory to the user's home
-WORKDIR /home/$USERNAME/ws
+WORKDIR /home/$USERNAME
 EOF
 
 docker build -t pydev:latest .
